@@ -21,6 +21,11 @@
     top: 0;
     z-index: 1000;
     height: $header-height;
+    padding: 10px 200px;
+    @include tablet {
+        padding: 10px 30px;
+    }
+    transition: all 0.4s ease;
     &__wrap{
         @include flex(center, space-between);
         @include mobile {

@@ -1,0 +1,73 @@
+@use '../../scss/' as *;
+
+.hero-slide_item{
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include overlay();
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
+    }
+    &_content{
+        position: relative;
+        @include flex(center,space-between);
+        padding: 100px 200px;
+        @include tablet {
+            padding: 10px 30px;
+        }
+        
+        &_info{
+            width: 100%;
+            & >*~*{
+                padding-top: 30px;
+            }
+            span{
+                transform: translateY(-50%);
+            }
+        }
+        transition: all 0.4s ease;
+        &_poster{
+            width: 100%;
+            display: grid;
+            place-content: center;
+            img{
+                width: 400px;
+                border-radius: $border-radius;
+                box-shadow: $box-shadow;
+                transform: scale(0);
+                transition: transform 0.5s ease;
+            }
+        }
+    
+       
+    
+    }
+    &.active > &_content > &_content_poster{
+        img{
+            transform: scale(1);
+        }
+    }
+}
+
+.button{
+    @include flex(center,flex-start);
+    & > * ~ * {
+        margin-left: 30px;
+    }
+}
+
