@@ -1,0 +1,65 @@
+@use '../../scss/' as *;
+
+.logo{
+    font-size: 2.5rem;
+    font-weight: 600;
+    @include flex(center, unset);
+    img {
+        width: 50px;
+        margin-right: 10px;
+
+        @include mobile{
+            width: 30px;
+            margin-right: 5px;
+        }
+    }
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: $header-height;
+    &__wrap{
+        @include flex(center, space-between);
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &__nav {
+        @include flex(center, center);
+        & > * ~ * {
+            margin-left: 2rem;
+        }
+        @include mobile {
+            display: none;
+        }
+        li {
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            &::after{
+                position: absolute;
+                content: " ";
+                left: 0;
+                background-color: $main-color;
+                height: 2px;
+                bottom: 0;
+                width: 0;
+                transition: width 0.4s ease;
+            }
+
+            &.active::after,
+            &:hover::after{
+                width: 100%;
+            }
+        }
+    }
+}
+
+.shrink {
+    height: $header-shink-height;
+    background-color: $body-bg;
+}

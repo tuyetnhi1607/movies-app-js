@@ -1,0 +1,12 @@
+@use "../../scss/" as *;
+
+.modal {
+    position: fixed;
+    z-index: 100;
+    background-color: $white;
+    opacity: 0;
+}
+
+.active{
+    opacity: 1;
+}
