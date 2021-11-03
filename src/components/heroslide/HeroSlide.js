@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
-import tmdbApi, { movieType } from "../../api/tmdbApi";
+import tmdbApi, { movieType, category } from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
 import Button from "../button/Button";
 import './heroslide.scss';
+import Modal from "../modal/Modal";
 
 const HeroSlide = () => {
   //Goi API
@@ -30,7 +31,7 @@ const HeroSlide = () => {
             <SwiperSlide key={i}>
                 {
                     ({isActive})=>(
-                        <SlideItem item={item} className={`${isActive ? 'active': ''}`}/>
+                        <SlideItem key={i} item={item} className={`${isActive ? 'active': ''}`}/>
                     )
                 }
                 
@@ -38,18 +39,34 @@ const HeroSlide = () => {
           );
         })}
       </Swiper>
-      
+      {
+        movieItems.map((item, i)=><TrailerModal key={i} item={item}/>)
+      }
     </div>
   );
 };
 
 //Detail
 const SlideItem = (props) => {
-  console.log("item");
-  const { item } = props;
+  
+  const { item, key } = props;
+  console.log("item",key, item);
   const background = apiConfig.originalImage(
     item.backdrop_path ? item.backdrop_path : ""
   );
+  const activeModal = () => {
+    const modal = document.querySelector(`#modal_${item.id}`);
+    tmdbApi.getVideos(category.movie, item.id).then((response) => {
+      if(response.results.length > 0) {
+        const src = "https://www.youtube.com/embed/" + response.results[0].key;
+        modal.querySelector("iframe").setAttribute("src", src);
+      }
+      else{
+        modal.innerHTML = 'No trailer';
+      }
+      modal.classList.toggle('active');
+    })
+  }
   return (
     <div style={{ backgroundImage: `url(${background})`}} className={`hero-slide_item ${props.className}`}>
       <div className="hero-slide_item_content">
@@ -59,9 +76,8 @@ const SlideItem = (props) => {
           <div style={{fontSize:'0.8rem', fontWeight:'500'}}>{item.overview}</div>
           <div className="button">
             <Button>Watch Now</Button>
-            <Button className="btn-outline">Watch trailer</Button>
+            <Button className="btn-outline" onClick={activeModal}>Watch trailer</Button>
           </div>
-          
         </div>
         {/* poster */}
         <div className="hero-slide_item_content_poster">
@@ -71,5 +87,12 @@ const SlideItem = (props) => {
     </div>
   );
 };
+
+const TrailerModal = (props) =>{
+  const {item} = props;
+  return (
+    <Modal active={false} id={`modal_${item.id}`}/>
+  )
+}
 
 export default HeroSlide;

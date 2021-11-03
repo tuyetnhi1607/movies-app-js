@@ -1,12 +1,22 @@
 @use "../../scss/" as *;
 
+
 .modal {
     position: fixed;
     z-index: 100;
-    background-color: $white;
+    top: 0;
+    background-color: rgba(112, 16, 16, 0.289);
+    height: 100%;
+    width: 100%;
     opacity: 0;
+    display: none;
+    iframe{
+        transform: translateX(50%) translateY(50%);
+    }
+    &.active{
+        opacity: 1;
+        display: block;
+    }
+    transition: all 0.4s ease;
 }
 
-.active{
-    opacity: 1;
-}

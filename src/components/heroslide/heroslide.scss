@@ -28,7 +28,7 @@
         @include flex(center,space-between);
         padding: 100px 200px;
         @include tablet {
-            padding: 10px 30px;
+            padding: 70px 30px;
         }
         
         &_info{
@@ -51,6 +51,12 @@
                 box-shadow: $box-shadow;
                 transform: scale(0);
                 transition: transform 0.5s ease;
+            }
+            @include mobile {
+                display: none;
+            }
+            @include tablet {
+                display: none;
             }
         }
     
