@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import logo from "../../assets/tmovie.png";
 import { Link, useLocation } from "react-router-dom";
 import "./header.scss";
@@ -20,10 +20,21 @@ const headerNav = [
 
 function Header() {
   const { pathname } = useLocation();
-  const active = headerNav.findIndex(e => e.path === pathname ? e : 0);
+  const active = headerNav.findIndex((e) => (e.path === pathname ? e : 0));
   console.log("active", active);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      console.log("scroll", document.documentElement.scrollTop);
+      if (
+        document.body.scrollTop > 100 ||
+        document.documentElement.scrollTop > 100
+      ) {
+        document.querySelector(".header").classList.add("shrink");
+      } else document.querySelector(".header").classList.remove("shrink");
+    });
+  }, []);
   return (
-    <div className="header">
+    <div className="header" id="header">
       <div className="header__wrap">
         <div className="logo">
           <img src={logo} alt="logo" />

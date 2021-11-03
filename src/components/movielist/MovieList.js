@@ -38,13 +38,7 @@ function MovieList(props) {
       </div>
       {/* content */}
       <div className="section-content">
-        <Swiper
-          slidesPerView={8}
-          loop={true}
-          pagination={{
-            clickable: true,
-          }}
-        >
+        <Swiper grabCursor={true} spaceBetween={10} slidesPerView={(window.innerWidth / 300).toFixed(0)}>
           {list.map((item, i) => (
             <SwiperSlide key={item.id}>
               <CardMovie data={item} />

@@ -1,11 +1,17 @@
 @use '../../scss/' as *;
 
 .section{
-    margin-top: 50px;
+    margin-top: 20px;
     &-header{
         @include flex(center, space-between);
     }   
-
-    &_content{
+    padding: 0 200px;
+    @include tablet {
+        padding: 0 30px;
+        margin-top: 0px;
+    }
+    @include mobile {
+        padding: 0 30px;
+        margin-top: 0px;
     }
 }
