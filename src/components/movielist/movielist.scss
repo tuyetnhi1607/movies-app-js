@@ -1,0 +1,11 @@
+@use '../../scss/' as *;
+
+.section{
+    margin-top: 50px;
+    &-header{
+        @include flex(center, space-between);
+    }   
+
+    &_content{
+    }
+}

@@ -1,0 +1,9 @@
+@use '../../scss/' as *;
+
+.card{
+    padding: 20px 6px;
+    img{
+        border-radius: $border-radius;
+        width: 200px;
+    }
+}

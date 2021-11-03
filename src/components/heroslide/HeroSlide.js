@@ -26,8 +26,7 @@ const HeroSlide = () => {
     //Slide
     <div >
       <Swiper>
-        {movieItems.map((item, i) => {
-          return (
+        {movieItems.map((item, i) => (
             <SwiperSlide key={i}>
                 {
                     ({isActive})=>(
@@ -36,8 +35,8 @@ const HeroSlide = () => {
                 }
                 
             </SwiperSlide>
-          );
-        })}
+          )
+        )}
       </Swiper>
       {
         movieItems.map((item, i)=><TrailerModal key={i} item={item}/>)

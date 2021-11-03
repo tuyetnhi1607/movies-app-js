@@ -23,7 +23,6 @@ function Modal(props) {
       id={props.id}
     >
       <iframe
-      pause={false}
         width="50%"
         height="50%"
         title="YouTube video player"
