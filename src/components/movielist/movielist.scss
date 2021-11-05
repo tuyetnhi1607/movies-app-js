@@ -5,13 +5,14 @@
     &-header{
         @include flex(center, space-between);
     }   
-    padding: 0 200px;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 2rem;
     @include tablet {
-        padding: 0 30px;
         margin-top: 0px;
     }
     @include mobile {
-        padding: 0 30px;
         margin-top: 0px;
     }
 }

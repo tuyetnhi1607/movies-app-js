@@ -26,11 +26,10 @@
     &_content{
         position: relative;
         @include flex(center,space-between);
-        padding: 100px 200px;
-        @include tablet {
-            padding: 70px 30px;
-        }
-        
+        max-width: 1600px;
+        padding: 9rem 3rem;
+        margin-left: auto;
+        margin-right: auto;
         &_info{
             width: 100%;
             & >*~*{

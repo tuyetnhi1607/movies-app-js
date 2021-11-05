@@ -11,15 +11,15 @@
 }
 
 html {
-    font-size: 100%;
+    font-size: 1vw;
     color: pink;
 
     @include tablet {
-        font-size: 80%;
+        font-size: 2vw;
     }
 
     @include mobile {
-        font-size: 60%;
+        font-size: 3vw;
     }
 }
 
@@ -27,7 +27,7 @@ body {
     font-family: $font-family;
     font-weight: 400;
     line-height: 1.5;
-
+    width: 100vw;
     background-color: $body-bg;
     color: $txt-color;
 

@@ -41,7 +41,7 @@ function MovieList(props) {
         <Swiper grabCursor={true} spaceBetween={10} slidesPerView={(window.innerWidth / 300).toFixed(0)}>
           {list.map((item, i) => (
             <SwiperSlide key={item.id}>
-              <CardMovie data={item} />
+              <CardMovie data={item} category={category} />
             </SwiperSlide>
           ))}
         </Swiper>

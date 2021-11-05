@@ -5,8 +5,8 @@ function Modal(props) {
   const [active, setActive] = useState(false);
   const modal = useRef(null);
   window.addEventListener("click", (event) => {
-    console.log("modal", modal.current);
-    console.log("event", event.target);
+    // console.log("modal", modal.current);
+    // console.log("event", event.target);
     if (event.target === modal.current) {
       modal.current.classList.remove("active");
       setActive(false);

@@ -5,7 +5,7 @@ import apiConfig from "../../api/apiConfig";
 import Button from "../button/Button";
 import './heroslide.scss';
 import Modal from "../modal/Modal";
-
+import { useHistory } from 'react-router';
 const HeroSlide = () => {
   //Goi API
   const [movieItems, setMovieItems] = useState([]);
@@ -47,7 +47,7 @@ const HeroSlide = () => {
 
 //Detail
 const SlideItem = (props) => {
-  
+  let history = useHistory();
   const { item, key } = props;
   console.log("item",key, item);
   const background = apiConfig.originalImage(
@@ -74,7 +74,7 @@ const SlideItem = (props) => {
           <span style={{fontSize:'2.5rem', fontWeight:'700'}}>{item.original_title}</span>
           <div style={{fontSize:'0.8rem', fontWeight:'500'}}>{item.overview}</div>
           <div className="button">
-            <Button>Watch Now</Button>
+            <Button onClick={()=>history.push('/movie/' + item.id)}>Watch Now</Button>
             <Button className="btn-outline" onClick={activeModal}>Watch trailer</Button>
           </div>
         </div>

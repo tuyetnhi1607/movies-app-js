@@ -1,0 +1,105 @@
+@use '../../scss/' as *;
+
+.detail{
+    position: relative;
+    background-position: center;
+    height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include overlay();
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
+    }
+}
+.detail-content{
+    position: relative;
+    //transform: translateY(-100%);
+    z-index: 20;
+    max-width: 1600px;
+    margin: 0 auto;
+    @include flex(flex-start, center);
+    margin-top: calc(-50vh + 200px);
+    top: 0;
+    width: 100%;
+    padding: 0 10rem;
+    &-poster{
+        width: 50%;
+        img{
+            display: block;
+            border-radius: $border-radius;
+            width: 25rem;
+            margin-left: auto;
+            margin-right: 0;
+        }
+    }
+    @include mobile{
+        padding: 0;
+        &-poster{
+            display: none;
+        }
+        margin-top: calc(-50vh + 100px);
+    }
+    @include tablet{
+        padding: 0 2rem;
+        // &-poster{
+        //     display: none;
+        // }
+        // margin-top: calc(-50vh + 100px);
+    }
+    &-info{
+        width: 100%;
+        padding: 0 2rem;
+        & > * ~ * {
+            margin-top: 1.5rem;
+        }
+        &-title{
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        &-genres{
+            @include flex(center, flex-start);
+            flex-wrap: wrap;
+            & > * {
+                margin: 0.5rem 1rem 0 0;
+            }
+        }
+        &-overview{
+            font-size: 1rem;
+        }
+        &-cast{
+            .list-container{
+                @include flex(flex-start, flex-start);
+                flex-wrap: wrap;
+                width: 100%;
+                .card{
+                    width: 4rem;
+                    padding-bottom: 1rem;
+                    margin-right: 1rem;
+                    .image{
+                        width: contain;
+                    }
+                    .name{
+                        font-size: 0.7rem;
+                    }
+                    
+                }
+                
+            }
+        }
+
+    }
+}
