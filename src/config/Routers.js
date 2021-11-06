@@ -7,9 +7,9 @@ import Detail from "../pages/Detail/Detail";
 function Routers() {
   return (
     <Switch>
-      <Route path="/movies-app-js/:category" component={Catalog} />
-       <Route path="/movies-app-js/:category/:id" component={Detail} />
-      <Route path="/movies-app-js/" exact component={Home} />
+      {/* <Route path="/:category" component={Catalog} /> */}
+       <Route path="/:category/:id" component={Detail} />
+      <Route path="/" exact component={Home} />
     </Switch>
   );
 }
